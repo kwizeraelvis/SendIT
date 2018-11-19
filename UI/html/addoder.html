@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title>Send IT Home</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/home.css">
+    <link rel="stylesheet" type="text/css" href="../css/oderprogress.css">
+</head>
+<body class="homebody">
+<div class="containerHome">
+<div class="topHome">
+<div class="toCenterHome">
+<div class="searchSection">
+<div class="textSearch">
+<input type="text" placeholder="Search" />
+</div>
+<div class="searchButton">
+<input class="searchButtonIcon" type="image" src="../images/icons/search.svg"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="LinkHome">
+<div class="LinkCenterHome">
+  <div class="LinkCenterHomeLogo">
+   <img  src="../images/icons/logo.svg" class="logo" alt="logo" srcset="">
+   <h1 class="WebTextName">SendIT</h1>
+     </div>
+     <div class="LinkCenterHomeLinks">
+     <table class="tableLinks" border="0">
+     <tr>
+			 <td class="rowdata"><a class="tabLinks" href="home.html">Home</a></td>
+			 <td class="rowdata"><a class="tabLinks" href="addoder.html">Add oder</a></td>
+			 <td class="rowdata"><a class="tabLinks" href="transit.html">Transit</a></td>
+			 <td class="rowdata"><a class="tabLinks" href="../index.html">Logout</a></td>
+     </tr>
+     </table>
+     </div>
+
+
+</div>
+</div>
+
+<div class="bodyHome">
+<div class="bodyHomeCenter">
+<section class="content" id="new-order">
+<div class="row">
+            <div class="steps">
+                <ul class="progress" id="progressbar">
+                    <li class="active">Information Order</li>
+                    <li class="">Payment Mehod</li>
+                    <li class="">Verfication Information</li>
+                </ul>
+            </div>
+        </div>
+       <div class="order-form parcel-info active">
+
+         <table class="bodtyHomeFields" border="0" width="600px">
+         <tr>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Name:</p><input id="fields" type="text" placeholder="Enter your email address"></td>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Orgin:</p><input id="fields" type="text" placeholder="Enter the orgin city"></td>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Destination:</p><input id="fields" type="text" placeholder="Enter the destination city"></td>
+
+
+         </tr>
+         <tr>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Email:</p><input id="fields" type="email" placeholder="Enter your email address"></td>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Phone Number:</p><input id="fields" type="tel" placeholder="Enter your phone number with country code"></td>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Date:</p><input id="fields" type="date" placeholder="Enter your email address"></td>
+         </tr>
+
+         <tr>
+         <td><b id="fieldsTitle">Item Information:</b></td>
+         </tr>
+         <tr>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Quantity:</p><input id="fields" type="number" placeholder="Enter the Quantity"></td>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Weight:</p><input id="fields" type="number" placeholder="Enter the Item's weight"></td>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Length:</p><input id="fields" type="number" placeholder="Enter the Item's Length"></td>
+         </tr>
+         <tr>
+         <td  colspan="1" class="tableFieldstd"><button class="btn btn-block btn-default" >Clear</button></td>
+         <td  colspan="2" class="tableFieldstd"><button class="btn btn-block btn-primary"  id="#next-pay" onclick="nextOrPrev('next')">Next</button></td>
+         </tr>
+         </table>
+
+        </div>
+        <div class="order-form payment-info" active>
+        <div class="row">
+
+         <table class="bodtyHomeFields" border="0" width="600px">
+         <tr>
+         <td> <img src="../images/credit.PNG" width="300" height="30" alt=""/></td>
+         </tr>
+         <tr>
+         <td><p>Card Number:</p><input type="text" placeholder="Enter ther card Number"></td>
+         <td><p>Security Code:</p><input type="text" placeholder="Enter ther security code"></td>
+         </tr>
+         <tr>
+         <td colspan="2"><a class="moreaboutcreditysecuritycode">The card security code is a 3 digit number on the back of Visa/MC
+         /Disc or 4 digit number on the front af Amex.</a></td>
+         </tr>
+         <tr>
+         <td colspan="2"><p>Expiration Date:</p><input type="date"></td>
+         </tr>
+           <tr>
+         <td  class="tableFieldstd"><button class="btn btn-block btn-default"  onclick="nextOrPrev('prev')">Back</button></td>
+          <td  class="tableFieldstd"><button class="btn btn-block btn-primary"  id="#next-pay" onclick="nextOrPrev('next')">Next</button></td> </tr>
+         </table>
+
+        </div>
+         </div>
+         <div class="order-form payment-info" active>
+
+         <table class="bodtyHomeFields" border="0" width="600px">
+         <tr>
+         <td><b id="fieldsTitle">Location Information:</b></td>
+         </tr>
+         <tr>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Orgin:</p><p>Kigali</p></td>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Destination:</p><p>Huye</p></td>
+         </tr>
+         <tr>
+         <td><b id="fieldsTitle">Contact Information:</b></td>
+         </tr>
+         <tr>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Email:</p><p>gprestein055@gmail.com</p></td>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Phone Number:</p><p>+25081049218</p></td>
+         </tr>
+         <tr>
+         <td><b id="fieldsTitle">Item Information:</b></td>
+         </tr>
+         <tr>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Quantity:</p><p>120</p></td>
+         <td  class="tableFieldstd"><p id="fieldsTitle">Weight:</p><p>840KG</p></td>
+         </tr>
+         <tr>
+         <td  class="tableFieldstd"><button class="btn btn-block btn-default"  onclick="nextOrPrev('prev')">Cancel</button></td>
+         <td  class="tableFieldstd"><button class="btn btn-block btn-primary" id="#send-parcel">Send</button></td>
+         </tr>
+         </table>
+
+         </div>
+         </section>
+</div>
+
+<div class="bodyHomeFooter">
+<marquee>
+<a class="footer">Copyright © 2018 SenIT</a>
+</marquee>
+</div>
+</div>
+ <script src="../js/checkclose.js"></script>
+  <script src="../js/main.js"></script>
+    <script src="../js/orders.js"></script>
+</body>
+</html>
