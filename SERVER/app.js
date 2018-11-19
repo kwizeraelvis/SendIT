@@ -90,3 +90,5 @@ app.post('/api/v1/packages', (req, res) => {
         res.send(deliveryOrder);
     };
 });
+
+app.listen(port, () => console.log(`The API is listening on ${port}`));
