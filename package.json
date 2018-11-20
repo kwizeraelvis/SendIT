@@ -1,0 +1,28 @@
+{
+  "name": "sendit",
+  "version": "1.0.0",
+  "description": "andela developer challenge",
+  "main": "SERVER/app.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  },
+  "scripts": {
+    "start": "nodemon SERVER/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwizeraelvis/SendIT.git"
+  },
+  "author": "Kwizera Aime Elvis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kwizeraelvis/SendIT/issues"
+  },
+  "homepage": "https://github.com/kwizeraelvis/SendIT#readme"
+}
