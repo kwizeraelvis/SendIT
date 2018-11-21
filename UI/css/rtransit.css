@@ -1,0 +1,124 @@
+.reportcontent{
+	overflow:auto;
+	max-height: 280px;
+	height: 280px;
+	width: 750px;
+	margin-left: 15px;
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 15px;
+		 -webkit-box-shadow:0px 0px 06px #70A8FF;
+		-moz-box-shadow:0px 0px 6px #70A8FF;
+}
+.reportinfo{
+  height: 110px;
+	width: 750px;
+	margin-left: 15px;
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 15px;
+		 -webkit-box-shadow:0px 0px 06px #70A8FF;
+		-moz-box-shadow:0px 0px 6px #70A8FF;
+}
+.rep_icon{
+	width: 25px;
+	height: 25px;
+}
+.rep_title{
+	font-size: 17px;
+}
+.rep_numbers{
+	font-size: 17px;
+}
+.printButtonDiv{
+	margin-left: 600px;
+	margin-top: -90px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color:white;
+	width: 100px;
+	height:auto;
+	border-radius: 5px;
+		 -webkit-box-shadow:0px 0px 03px #A3A3A3;
+		-moz-box-shadow:0px 0px 3px #A3A3A3;
+	color: #3697FD;
+	font-family: sans-serif: ;
+}
+.printButtonDiv,button{
+	color: #3697FD;
+}
+.printButtonDiv:hover{
+	border-radius: 5px;
+		 -webkit-box-shadow:0px 0px 03px #2292FF;
+		-moz-box-shadow:0px 0px 3px #2292FF;
+}
+.editButton{
+	height: 35px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 4px;
+	-webkit-box-shadow:0px 0px 03px #A3A3A3;
+ -moz-box-shadow:0px 0px 3px #A3A3A3;
+color: #3697FD;
+}
+/* forms css*/
+#dist-cont .transit-form {
+	display: none;
+}
+
+#dist-cont .transit-form.active {
+	display:block;
+}
+#transit-cont .user-transit-form {
+	display: none;
+}
+#transit-cont .user-transit-form.active {
+	display: block;
+}
+.modifyTitle{
+	font-size: 20px;
+}
+.editTable{
+	width: 500px;
+}
+.ChangeInfofields{
+	border: 1px solid gray;
+	width: 200px;
+	height: 30px;
+	padding-left: 5px;
+}
+.selectedOption{
+	color: gray;
+}
+.modifyApply{
+	width: 200px;
+	height: 30px;
+	margin-top: 100px;
+	background-color: #3697FD;
+	color: white;
+	border-radius: 3px;
+}
+.modifyApply:hover{
+	background-color: #2292FF;
+}
+.modifyCancel{
+	width: 205px;
+	margin-top: 100px;
+	height: 30px;
+	background-color: white;
+	color: #3697FD;
+	border: 1px solid #3697FD;
+	border-radius: 3px;
+}
+.modifyCancel:hover{
+	-webkit-box-shadow:0px 0px 03px #2292FF;
+ -moz-box-shadow:0px 0px 3px #2292FF;
+}
+.user-transit-rep-action{
+	height: 20px;
+	width: 20px;
+}
+.user-transit-rep-action:hover{
+	height: 25px;
+	width: 25px;
+}
