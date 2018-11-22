@@ -1,0 +1,34 @@
+{
+  "name": "sendit",
+  "version": "1.0.0",
+  "description": "Andela Developer Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwizeraelvis/SendIT.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "KWIZERA Aime Elvis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kwizeraelvis/SendIT/issues"
+  },
+  "homepage": "https://github.com/kwizeraelvis/SendIT#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "nodemon": "^1.18.6"
+  }
+}
