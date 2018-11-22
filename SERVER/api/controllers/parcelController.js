@@ -23,6 +23,24 @@ class parcelController {
       });
     }
   }
+
+  static createParcel(req, res) {
+    const newPid = parseInt(Parcels.length, 10) + 1;
+    const {
+      Powner, Plocation, Pdestination, Pweight,
+    } = req.body;
+    const newParcel = {
+      Pid: newPid,
+      Powner,
+      Plocation,
+      Pdestination,
+      Pweight,
+    };
+    Parcels.push(newParcel);
+    return res.status(200).json({
+      message: 'created a new parcel',
+    });
+  }
 }
 
 
