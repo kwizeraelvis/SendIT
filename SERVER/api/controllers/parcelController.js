@@ -57,6 +57,21 @@ class parcelController {
       });
     }
   }
+
+  static updaetParcel(req, res) {
+    const { Pid } = req.params;
+    const findParcel = Parcels.find(e => e.Pid === Pid);
+    if (findParcel) {
+      (findParcel.Pdestination = req.body.Pdestination);
+      res.status(200).json({
+        message: 'The parcel was successfully updated',
+      });
+    } else {
+      res.status(400).json({
+        error: 'The parcel could not be updated',
+      });
+    }
+  }
 }
 
 
