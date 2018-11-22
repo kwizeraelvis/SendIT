@@ -41,6 +41,22 @@ class parcelController {
       message: 'created a new parcel',
     });
   }
+
+  static cancelParcel(req, res) {
+    const { Pid } = req.params;
+    const findParcel = Parcels.find(e => e.Pid === Pid);
+    if (findParcel) {
+      const newParcels = Parcels.filter(e => e !== findParcel);
+      res.status(200).json({
+        message: 'The specified parcel was successfully canceled',
+        Parcels: newParcels,
+      });
+    } else {
+      res.status(400).json({
+        error: 'could not cancel the specified parcel',
+      });
+    }
+  }
 }
 
 
