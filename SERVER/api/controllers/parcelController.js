@@ -27,12 +27,14 @@ class parcelController {
 
   static createParcel(req, res) {
     const newPid = parseInt(Parcels.length, 10) + 1;
+    // eslint-disable-next-line object-curly-newline
+    const { Powner, Plocation, Pdestination, Pweight } = req.body;
     const newParcel = {
-      Pid: newPid,
-      powner: req.body.Powner,
-      plocation: req.body.Plocation,
-      pdestination: req.body.Pdestination,
-      pweight: req.body.Pweight,
+      id: newPid,
+      Powner,
+      Plocation,
+      Pdestination,
+      Pweight,
     };
     Parcels.push(newParcel);
     res.status(201).json({
@@ -58,11 +60,11 @@ class parcelController {
     }
   }
 
-  static updaetParcel(req, res) {
+  static updateParcel(req, res) {
     const { Pid } = req.params;
     const findParcel = Parcels.find(e => e.Pid === Pid);
     if (findParcel) {
-      (findParcel.Pdestination = req.body.Pdestination);
+      (findParcel.Pdestination = req.body);
       res.status(200).json({
         message: 'The parcel was successfully updated',
       });
