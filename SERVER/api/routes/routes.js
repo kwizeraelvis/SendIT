@@ -6,8 +6,9 @@ const router = express.Router();
 router.get('/', parcelController.getAllParcels);
 router.get('/api/v1/parcels', parcelController.getAllParcels);
 router.get('/api/v1/parcels/:Pid', parcelController.getParcelByID);
+router.get('/api/v1/users/:userId/parcels', parcelController.getParcelByUserId);
 router.post('/api/v1/parcels', parcelController.createParcel);
-router.put('/api/v1/parcels/:Pid/update', parcelController.updateParcel);
-router.delete('/api/v1/parcels/:Pid/cancel', parcelController.cancelParcel);
+// router.put('/api/v1/parcels/:Pid/update', parcelController.updateParcel);
+router.put('/api/v1/parcels/:Pid/cancel', parcelController.cancelParcel);
 
 export default router;

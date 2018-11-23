@@ -25,12 +25,29 @@ class parcelController {
     }
   }
 
+  static getParcelByUserId(req, res) {
+    const { userId } = req.params;
+    // eslint-disable-next-line eqeqeq
+    const foundParcel = Parcels.find(e => e.userId == userId);
+    if (foundParcel) {
+      res.status(200).json({
+        message: 'The parcel has been Found',
+        parcel: foundParcel,
+      });
+    } else {
+      res.status(400).json({
+        error: 'The parcel with the provided Id does not exist',
+      });
+    }
+  }
+
   static createParcel(req, res) {
     const newPid = parseInt(Parcels.length, 10) + 1;
     // eslint-disable-next-line object-curly-newline
     const { Powner, Plocation, Pdestination, Pweight } = req.body;
     const newParcel = {
-      id: newPid,
+      Pid: newPid,
+      userId: newPid + 1,
       Powner,
       Plocation,
       Pdestination,
