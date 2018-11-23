@@ -6,7 +6,6 @@ import router from './routes/routes';
 
 const server = express();
 server.use(express.json());
-server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({
   extended: false,
 }));
