@@ -77,7 +77,7 @@ class parcelController {
     }
   }
 
-  static updateParcel(req, res) {
+  /* static updateParcel(req, res) {
     const { Pid } = req.params;
     const findParcel = Parcels.find(e => e.Pid === Pid);
     if (findParcel) {
@@ -90,7 +90,7 @@ class parcelController {
         error: 'The parcel could not be updated',
       });
     }
-  }
+  } */
 }
 
 
