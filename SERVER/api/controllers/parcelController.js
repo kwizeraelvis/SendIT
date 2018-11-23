@@ -11,11 +11,12 @@ class parcelController {
 
   static getParcelByID(req, res) {
     const { Pid } = req.params;
-    const parcel = Parcels.find(e => e.Pid === Pid);
-    if (parcel) {
+    // eslint-disable-next-line eqeqeq
+    const foundParcel = Parcels.find(e => e.Pid == Pid);
+    if (foundParcel) {
       res.status(200).json({
         message: 'The parcel has been Found',
-        Parcel: parcel,
+        parcel: foundParcel,
       });
     } else {
       res.status(400).json({
@@ -26,25 +27,24 @@ class parcelController {
 
   static createParcel(req, res) {
     const newPid = parseInt(Parcels.length, 10) + 1;
-    const {
-      Powner, Plocation, Pdestination, Pweight,
-    } = req.body;
     const newParcel = {
       Pid: newPid,
-      Powner,
-      Plocation,
-      Pdestination,
-      Pweight,
+      powner: req.body.Powner,
+      plocation: req.body.Plocation,
+      pdestination: req.body.Pdestination,
+      pweight: req.body.Pweight,
     };
     Parcels.push(newParcel);
-    return res.status(200).json({
-      message: 'created a new parcel',
+    res.status(201).json({
+      message: 'The parcel was cretaed',
+      parcel: newParcel,
     });
   }
 
   static cancelParcel(req, res) {
     const { Pid } = req.params;
-    const findParcel = Parcels.find(e => e.Pid === Pid);
+    // eslint-disable-next-line eqeqeq
+    const findParcel = Parcels.find(e => e.Pid == Pid);
     if (findParcel) {
       const newParcels = Parcels.filter(e => e !== findParcel);
       res.status(200).json({
