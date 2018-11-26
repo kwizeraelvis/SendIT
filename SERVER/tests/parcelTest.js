@@ -3,65 +3,177 @@
 import chai from 'chai';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import chaiHttp from 'chai-http';
-import app from '../api/app';
+import server from '../api/app';
 
 chai.use(chaiHttp);
 
-describe('Parcels', () => {
-  describe('Get all Parcels', () => {
-    it('should return all parcels', (done) => {
+describe('PARCELS', () => {
+  describe('Get all parcels', () => {
+    it('should return an object of all parcels', (done) => {
       chai
-        .request(app)
+        .request(server)
         .get('/api/v1/parcels')
         .end((err, res) => {
           chai.expect(res.statusCode).to.be.equal(200);
+          chai.expect(res.body).to.be.a('object');
           done();
         });
     });
   });
   describe('Get one parcel with id 1', () => {
-    it('should return the parcel with specified ID', (done) => {
+    it('should return one parcel object', (done) => {
       const Pid = 1;
       chai
-        .request(app)
+        .request(server)
         .get(`/api/v1/parcels/${Pid}`)
         .end((err, res) => {
           chai.expect(res.statusCode).to.be.equal(200);
-          chai.expect(res.body.message).to.equal('The parcel has been Found');
+          chai.expect(res.body).to.be.a('object');
+          chai.expect(res.body.message).to.equal('parcel found');
           done();
         });
     });
   });
-  describe('Get a parcel with id 20', () => {
-    it('Should return an error', (done) => {
-      const Pid = 20;
+  describe('Get one parcel with id 10', () => {
+    it('should return error', (done) => {
+      const Pid = 10;
       chai
-        .request(app)
+        .request(server)
         .get(`/api/v1/parcels/${Pid}`)
         .end((err, res) => {
           chai.expect(res.statusCode).to.be.equal(400);
-          chai.expect(res.body.message).to.equal('The parcel with the provided Id does not exist');
+          chai.expect(res.body.message).to.equal('parcel not found');
           done();
         });
     });
   });
-  describe('Creting a new parcel', () => {
-    it('should create a new parcel', (done) => {
-      const newParcel = {
-        Pid: newPid,
-        userId: newPid + 1,
-        Powner,
-        Plocation,
-        Pdestination,
-        Pweight,
+  describe('adding a parcel', () => {
+    it('should add new parcel', (done) => {
+      const parcel = {
+        Powner: 'Kevin',
+        Plocation: 'Kigali',
+        Pdestination: 'Huye',
+        Pweight: '50',
+        Pstatus: 'Pending',
       };
       chai
-        .request(app)
+        .request(server)
         .post('/api/v1/parcels')
-        .send(newParcel)
+        .send(parcel)
         .end((err, res) => {
-          chai.expect(res.statusCode).to.be.equal(201);
-          chai.expect(res.body.message).to.equal('The parcel was cretaed');
+          chai.expect(res.statusCode).to.be.equal(200);
+          chai.expect(res.body).to.be.a('object');
+          chai.expect(res.body.message).to.equal('created a new parcel');
+
+          done();
+        });
+    });
+  });
+  describe('adding a parcel status', () => {
+    it('should update status of  parcel', (done) => {
+      const id = 1;
+      chai
+        .request(server)
+        .put(`/api/v1/parcels/status/${id}`)
+        .end((err, res) => {
+          chai.expect(res.statusCode).to.be.equal(200);
+          chai.expect(res.body.message).to.equal('status changed');
+
+          done();
+        });
+    });
+  });
+  describe('adding a parcel status', () => {
+    it('should update status of  parcel', (done) => {
+      const id = 100;
+      chai
+        .request(server)
+        .put(`/api/v1/parcels/status/${id}`)
+        .end((err, res) => {
+          chai.expect(res.statusCode).to.be.equal(400);
+          chai.expect(res.body.message).to.equal('status could not be changed');
+
+          done();
+        });
+    });
+  });
+  describe('adding invalid parcel', () => {
+    it('should fail to add new parcel', (done) => {
+      const parcel = {
+        pickupLocation: 'Ruhango,Avenue 25 street',
+        destinationLocation: 'Musanze, City Market',
+        weight: '400 g',
+        comment: 'clothes',
+      };
+      chai
+        .request(server)
+        .post('/api/v1/parcels')
+        .send(parcel)
+        .end((err, res) => {
+          chai.expect(res.statusCode).to.be.equal(400);
+          chai.expect(res.body.message).to.equal('invalid data');
+
+          done();
+        });
+    });
+  });
+  describe('Delete a parcel with id 3', () => {
+    it('should return one parcel object', (done) => {
+      const id = 3;
+      chai
+        .request(server)
+        .delete(`/api/v1/parcels/${id}`)
+        .end((err, res) => {
+          chai.expect(res.statusCode).to.be.equal(200);
+          chai.expect(res.body).to.be.a('object');
+          chai.expect(res.body.message).to.equal('parcel deleted');
+          done();
+        });
+    });
+  });
+  describe('Delete a parcel that doesnot exist', () => {
+    it('should fail to delete a parcel', (done) => {
+      const Pid = 10;
+      chai
+        .request(server)
+        .delete(`/api/v1/parcels/${Pid}`)
+        .end((err, res) => {
+          chai.expect(res.statusCode).to.be.equal(400);
+          chai.expect(res.body.message).to.equal('parcel do not exist');
+          done();
+        });
+    });
+  });
+  describe('cancel a parcel with id 1', () => {
+    it('should cancel an order', (done) => {
+      const Pid = 1;
+      chai
+        .request(server)
+        .put(`/api/v1/parcels/${Pid}/cancel`)
+        .set('content-type', 'application/json')
+        .send({
+          cancel: true,
+        })
+        .end((err, res) => {
+          chai.expect(res.status).to.equal(200);
+          chai.expect(res.body.message).to.equal('order cancelled');
+          done();
+        });
+    });
+  });
+  describe('cancel a parcel with id 10', () => {
+    it('should fail to cancel an order', (done) => {
+      const Pid = 10;
+      chai
+        .request(server)
+        .put(`/api/v1/parcels/${Pid}/cancel`)
+        .set('content-type', 'serverlication/json')
+        .send({
+          cancel: true,
+        })
+        .end((err, res) => {
+          chai.expect(res.status).to.equal(400);
+          chai.expect(res.body.message).to.equal('parcel cannot be cancelled');
           done();
         });
     });

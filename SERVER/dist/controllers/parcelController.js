@@ -6,6 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _joi = require('joi');
+
+var _joi2 = _interopRequireDefault(_joi);
+
 var _parcel = require('../modal/parcel');
 
 var _parcel2 = _interopRequireDefault(_parcel);
@@ -14,105 +18,138 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var parcelController = function () {
-  function parcelController() {
-    _classCallCheck(this, parcelController);
+var parcelsController = function () {
+  function parcelsController() {
+    _classCallCheck(this, parcelsController);
   }
 
-  _createClass(parcelController, null, [{
-    key: 'getAllParcels',
-    value: function getAllParcels(req, res) {
+  _createClass(parcelsController, null, [{
+    key: 'getParcels',
+    value: function getParcels(req, res) {
       return res.json({
-        message: 'List of All parcels',
+        message: 'List of all parcels',
         parcels: _parcel2.default
       });
     }
   }, {
-    key: 'getParcelByID',
-    value: function getParcelByID(req, res) {
-      var Pid = req.params.Pid;
-
-      var parcel = _parcel2.default.find(function (e) {
-        return e.Pid === Pid;
-      });
-      if (parcel) {
-        res.status(200).json({
-          message: 'The parcel has been Found',
-          parcel: _parcel2.default
-        });
-      } else {
-        res.status(400).json({
-          error: 'The parcel with the provided Id does not exist'
-        });
-      }
-    }
-  }, {
     key: 'createParcel',
     value: function createParcel(req, res) {
-      var newPid = parseInt(_parcel2.default.length, 10) + 1;
-      var _req$body = req.body,
-          Powner = _req$body.Powner,
-          Plocation = _req$body.Plocation,
-          Pdestination = _req$body.Pdestination,
-          Pweight = _req$body.Pweight;
-
-      var newParcel = {
-        Pid: newPid,
-        Powner: Powner,
-        Plocation: Plocation,
-        Pdestination: Pdestination,
-        Pweight: Pweight
-      };
-      _parcel2.default.push(newParcel);
-      return res.status(200).json({
-        message: 'created a new parcel',
-        Parcels: newParcel
+      var data = req.body;
+      var schema = _joi2.default.object().keys({
+        Powner: _joi2.default.string().required(),
+        Plocation: _joi2.default.string().required(),
+        Pdestination: _joi2.default.string().required(),
+        Pweight: _joi2.default.number().required(),
+        Pstatus: _joi2.default.string().required()
+      });
+      _joi2.default.valPidate(data, schema, function (err, value) {
+        var newPid = _parcel2.default.length + 1;
+        if (err) {
+          res.status(400).json({
+            message: 'invalid data'
+          });
+        } else {
+          _parcel2.default.push(value);
+          res.status(200).json({
+            message: 'created a new parcel',
+            data: Object.assign({ newPid: newPid }, value)
+          });
+        }
       });
     }
+
+    // get one parcel
+
+  }, {
+    key: 'getOne',
+    value: function getOne(req, res) {
+      var Pid = req.params.Pid;
+
+      var oneParcel = _parcel2.default.find(function (parcel) {
+        return parcel.Pid === Pid;
+      });
+      if (oneParcel) {
+        return res.json({
+          message: 'parcel found',
+          parcel: oneParcel
+        });
+      }
+      return res.status(400).json({
+        message: 'parcel not found'
+      });
+    }
+
+    // change parcel status
+
+  }, {
+    key: 'changeParcelStatus',
+    value: function changeParcelStatus(req, res) {
+      var Pid = req.params.Pid;
+
+      var oneParcel = _parcel2.default.find(function (parcel) {
+        return parcel.Pid === Pid;
+      });
+      if (oneParcel) {
+        var updatedStatus = req.body.updatedStatus;
+
+        oneParcel.status = updatedStatus;
+        return res.status(200).json({
+          message: 'status changed'
+        });
+      }
+      return res.status(400).json({
+        message: 'status could not be changed'
+      });
+    }
+    // cancel a parcel order
+
   }, {
     key: 'cancelParcel',
     value: function cancelParcel(req, res) {
+      // eslint-disable-next-line prefer-destructuring
       var Pid = req.params.Pid;
-
-      var findParcel = _parcel2.default.find(function (e) {
-        return e.Pid === Pid;
+      var cancelParcel = _parcel2.default.find(function (parcel) {
+        return parcel.Pid === Pid;
       });
-      if (findParcel) {
-        var newParcels = _parcel2.default.filter(function (e) {
-          return e !== findParcel;
-        });
+      if (cancelParcel) {
+        var toCancel = req.body.cancelled;
         res.status(200).json({
-          message: 'The specified parcel was successfully canceled',
-          Parcels: newParcels
+          message: 'order cancelled'
         });
-      } else {
-        res.status(400).json({
-          error: 'could not cancel the specified parcel'
-        });
+        // eslint-disable-next-line no-return-assign
+        return cancelParcel.cancel = toCancel;
       }
+      return res.status(400).json({
+        message: 'parcel cannot be cancelled'
+      });
     }
+
+    // remove one parcel
+
   }, {
-    key: 'updaetParcel',
-    value: function updaetParcel(req, res) {
+    key: 'removeParcel',
+    value: function removeParcel(req, res) {
       var Pid = req.params.Pid;
 
-      var findParcel = _parcel2.default.find(function (e) {
-        return e.Pid === Pid;
-      });
-      if (findParcel) {
-        findParcel.Pdestination = req.body.Pdestination;
-        res.status(200).json({
-          message: 'The parcel was successfully updated'
-        });
-      } else {
-        res.status(400).json({
-          error: 'The parcel could not be updated'
+      var oneParcel = _parcel2.default.find(function (parcel) {
+        return parcel.Pid === Pid;
+      } // returns true if the parcel is found with the Pid from params
+      );
+      var parcelIndex = _parcel2.default.indexOf(oneParcel);
+      if (oneParcel) {
+        _parcel2.default.splice(parcelIndex, 1);
+        return res.status(200).json({
+          message: 'parcel deleted',
+          Parcels: _parcel2.default
         });
       }
+      return res.status(400).json({
+        message: 'parcel do not exist'
+      });
     }
   }]);
 
-  return parcelController;
+  return parcelsController;
 }();
 
-exports.default = parcelController;
+exports.default = parcelsController;

@@ -5,6 +5,7 @@ const parcels = [
     Plocation: 'Kigali',
     Pdestination: 'Ruhungeri',
     Pweight: '200',
+    Pstatus: 'Intransit',
   },
   {
     Pid: 2,
@@ -12,6 +13,7 @@ const parcels = [
     Plocation: 'Musanze',
     Pdestination: 'Ruhango',
     Pweight: '100',
+    Pstatus: 'Intransit',
   },
   {
     Pid: 3,
@@ -19,6 +21,7 @@ const parcels = [
     Plocation: 'Huye',
     Pdestination: 'Nyanza',
     Pweight: '800',
+    Pstatus: 'Intransit',
   },
 ];
 export default parcels;

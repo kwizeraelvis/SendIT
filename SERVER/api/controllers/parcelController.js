@@ -1,97 +1,106 @@
+import Joi from 'joi';
 import Parcels from '../modal/parcel';
 
-
-class parcelController {
+class parcelsController {
   static getAllParcels(req, res) {
     return res.json({
-      message: 'List of All parcels',
+      message: 'List of all parcels',
       parcels: Parcels,
     });
   }
 
-  static getParcelByID(req, res) {
-    const { Pid } = req.params;
-    // eslint-disable-next-line eqeqeq
-    const foundParcel = Parcels.find(e => e.Pid == Pid);
-    if (foundParcel) {
-      res.status(200).json({
-        message: 'The parcel has been Found',
-        parcel: foundParcel,
-      });
-    } else {
-      res.status(400).json({
-        error: 'The parcel with the provided Id does not exist',
-      });
-    }
-  }
-
-  static getParcelByUserId(req, res) {
-    const { userId } = req.params;
-    // eslint-disable-next-line eqeqeq
-    const foundParcel = Parcels.find(e => e.userId == userId);
-    if (foundParcel) {
-      res.status(200).json({
-        message: 'The parcel has been Found',
-        parcel: foundParcel,
-      });
-    } else {
-      res.status(400).json({
-        error: 'The parcel with the provided Id does not exist',
-      });
-    }
-  }
-
   static createParcel(req, res) {
-    const newPid = parseInt(Parcels.length, 10) + 1;
-    // eslint-disable-next-line object-curly-newline
-    const { Powner, Plocation, Pdestination, Pweight } = req.body;
-    const newParcel = {
-      Pid: newPid,
-      userId: newPid + 1,
-      Powner,
-      Plocation,
-      Pdestination,
-      Pweight,
-    };
-    Parcels.push(newParcel);
-    res.status(201).json({
-      message: 'The parcel was cretaed',
-      parcel: newParcel,
+    const data = req.body;
+    const schema = Joi.object().keys({
+      Powner: Joi.string().required(),
+      Plocation: Joi.string().required(),
+      Pdestination: Joi.string().required(),
+      Pweight: Joi.number().required(),
+      Pstatus: Joi.string().required(),
+    });
+    Joi.valPidate(data, schema, (err, value) => {
+      const newPid = Parcels.length + 1;
+      if (err) {
+        res.status(400).json({
+          message: 'invalid data',
+        });
+      } else {
+        Parcels.push(value);
+        res.status(200).json({
+          message: 'created a new parcel',
+          data: Object.assign({ newPid }, value),
+        });
+      }
     });
   }
 
-  static cancelParcel(req, res) {
+  // get one parcel
+  static getParcelById(req, res) {
     const { Pid } = req.params;
-    // eslint-disable-next-line eqeqeq
-    const findParcel = Parcels.find(e => e.Pid == Pid);
-    if (findParcel) {
-      const newParcels = Parcels.filter(e => e !== findParcel);
-      res.status(200).json({
-        message: 'The specified parcel was successfully canceled',
-        Parcels: newParcels,
-      });
-    } else {
-      res.status(400).json({
-        error: 'could not cancel the specified parcel',
+    const oneParcel = Parcels.find(parcel => parcel.Pid === Pid);
+    if (oneParcel) {
+      return res.json({
+        message: 'parcel found',
+        parcel: oneParcel,
       });
     }
+    return res.status(400).json({
+      message: 'parcel not found',
+    });
   }
 
-  /* static updateParcel(req, res) {
+  // change parcel status
+  static changeParcelStatus(req, res) {
     const { Pid } = req.params;
-    const findParcel = Parcels.find(e => e.Pid === Pid);
-    if (findParcel) {
-      (findParcel.Pdestination = req.body);
-      res.status(200).json({
-        message: 'The parcel was successfully updated',
-      });
-    } else {
-      res.status(400).json({
-        error: 'The parcel could not be updated',
+    const oneParcel = Parcels.find(parcel => parcel.Pid === Pid);
+    if (oneParcel) {
+      const { updatedStatus } = req.body;
+      oneParcel.status = updatedStatus;
+      return res.status(200).json({
+        message: 'status changed',
       });
     }
-  } */
+    return res.status(400).json({
+      message: 'status could not be changed',
+    });
+  }
+  // cancel a parcel order
+
+  static cancelParcel(req, res) {
+    // eslint-disable-next-line prefer-destructuring
+    const Pid = req.params.Pid;
+    const cancelParcel = Parcels.find(parcel => parcel.Pid === Pid);
+    if (cancelParcel) {
+      const toCancel = req.body.cancelled;
+      res.status(200).json({
+        message: 'order cancelled',
+      });
+      // eslint-disable-next-line no-return-assign
+      return (cancelParcel.cancel = toCancel);
+    }
+    return res.status(400).json({
+      message: 'parcel cannot be cancelled',
+    });
+  }
+
+  // remove one parcel
+  static removeParcel(req, res) {
+    const { Pid } = req.params;
+    const oneParcel = Parcels.find(
+      parcel => parcel.Pid === Pid, // returns true if the parcel is found with the Pid from params
+    );
+    const parcelIndex = Parcels.indexOf(oneParcel);
+    if (oneParcel) {
+      Parcels.splice(parcelIndex, 1);
+      return res.status(200).json({
+        message: 'parcel deleted',
+        Parcels,
+      });
+    }
+    return res.status(400).json({
+      message: 'parcel do not exist',
+    });
+  }
 }
 
-
-export default parcelController;
+export default parcelsController;
