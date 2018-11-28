@@ -1,3 +1,4 @@
+// eslint-disable no-unused-expressions
 import express from 'express';
 import bodyParser from 'body-parser';
 // eslint-disable-next-line import/no-unresolved

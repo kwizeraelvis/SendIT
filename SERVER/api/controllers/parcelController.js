@@ -18,7 +18,7 @@ class parcelsController {
       Pweight: Joi.number().required(),
       Pstatus: Joi.string().required(),
     });
-    Joi.valPidate(data, schema, (err, value) => {
+    Joi.validate(data, schema, (err, value) => {
       const newPid = Parcels.length + 1;
       if (err) {
         res.status(400).json({
@@ -35,7 +35,7 @@ class parcelsController {
   }
 
   // get one parcel
-  static getParcelById(req, res) {
+  static getParcelByID(req, res) {
     const { Pid } = req.params;
     const oneParcel = Parcels.find(parcel => parcel.Pid === Pid);
     if (oneParcel) {
@@ -55,13 +55,28 @@ class parcelsController {
     const oneParcel = Parcels.find(parcel => parcel.Pid === Pid);
     if (oneParcel) {
       const { updatedStatus } = req.body;
-      oneParcel.status = updatedStatus;
+      oneParcel.Pstatus = updatedStatus;
       return res.status(200).json({
         message: 'status changed',
       });
     }
     return res.status(400).json({
       message: 'status could not be changed',
+    });
+  }
+
+  static changeParcelDestination(req, res) {
+    const { Pid } = req.params;
+    const oneParcel = Parcels.find(parcel => parcel.Pid === Pid);
+    if (oneParcel) {
+      const { updatedDestination } = req.body;
+      oneParcel.Pdestination = updatedDestination;
+      return res.status(200).json({
+        message: 'Destination has been changed',
+      });
+    }
+    return res.status(400).json({
+      message: 'Destination  could not be changed',
     });
   }
   // cancel a parcel order
