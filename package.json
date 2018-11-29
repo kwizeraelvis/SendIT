@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon SERVER/dist/app.js",
-    "build": "babel SERVER/api/ --presets babel-preset-env --out-dir SERVER/dist/",
-    "build-test": "babel SERVER/tests/ --presets babel-preset-env --out-dir SERVER/dist/",
-    "test": "mocha --timeout 2000 --compilers js:babel-register SERVER/tests/parcelTest.js --require babel-core/register --require babel-polyfill",
-    "cover": "NODE_ENV=test istanbul cover _mocha -- --compilers js:babel-register --timeout 2000 SERVER/tests/parcelTest.js",
+    "test": "mocha --timeout 10000 --compilers js:babel-register SERVER/tests/parcelTest.js --require babel-core/register --require babel-polyfill",
+    "cover": "NODE_ENV=test istanbul cover _mocha -- --compilers js:babel-register --timeout 10000 SERVER/tests/parcelTest.js --require babel-polyfill",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "devstart": "nodemon SERVER/api/app.js --exec babel-node --presets env"
   },
