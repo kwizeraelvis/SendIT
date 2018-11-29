@@ -1,25 +1,37 @@
 # SendIT
-###SendIt is a courier service that helps users deliver parcels to over 220 locations WorldWide.
+
+### SendIt is a courier service that helps users deliver parcels to over 220 locations WorldWide.
+
 ### Built Using
-##UI/Frontend
+
+## UI/Frontend
+
 --HTML
 --CSS
 --Javascript
-##Backend
+
+## Backend
+
 --Express
 --Nodejs
-###Features Available
+
+### Features Available
+
 --User can Signup for SendIT
 --User can login to their account
 --User can create a parcel delivery order
 --User can change the destination or a cancel a parcel delivery order
 --Users can view details about the orders they ahve created
-###Installation
+
+### Installation
+
 1)Fork this repo to your local storage.
 2)Run npm install to install diffrent dependencies needed for functioning
 3)Run npm run devstart to start the API server
 N.B. More commands can be found in the package.json 
-###Available API Endpoints
+
+### Available API Endpoints
+
 | EndPoint                                    | Functionality                                         |
 |:--------------------------------------------|:------------------------------------------------------|
 |GET /api/v1/parcels                          | Gets all parcels available                            |
@@ -28,7 +40,9 @@ N.B. More commands can be found in the package.json
 |PUT /api/v1/parcels/:Pid/update/status       | Updates the parcel status of any specified parcel     |
 |PUT /api/v1/parcels/:Pid/update/destination  | Updates the destination of a specifred parcel         |
 -------------------------------------------------------------------------------------------------------
-##Database Endpoints
+
+## Database Endpoints
+
 | EndPoint                                    | Functionality                                         |
 |:--------------------------------------------|:------------------------------------------------------|
 |GET /api/v2/parcels                          | Fetch all PArcels in database                         |
