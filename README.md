@@ -31,10 +31,10 @@
 
 ### Installation
 
-1)Fork this repo to your local storage.
-2)Run npm install to install diffrent dependencies needed for functioning
-3)Run npm run devstart to start the API server
-N.B. More commands can be found in the package.json 
+- Fork this repo to your local storage.
+- Run npm install to install diffrent dependencies needed for functioning
+- Run npm run devstart to start the API server
+- N.B. More commands can be found in the package.json 
 
 ### Available API Endpoints
 
