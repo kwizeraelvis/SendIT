@@ -1,3 +1,8 @@
+
+[![Coverage Status](https://coveralls.io/repos/github/kwizeraelvis/SendIT/badge.svg?branch=develop)](https://coveralls.io/github/kwizeraelvis/SendIT?branch=develop)
+
+
+
 # SendIT
 
 ### SendIt is a courier service that helps users deliver parcels to over 220 locations WorldWide.
