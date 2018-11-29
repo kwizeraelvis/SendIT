@@ -6,22 +6,22 @@
 
 ## UI/Frontend
 
---HTML
---CSS
---Javascript
+-- HTML
+-- CSS
+-- Javascript
 
 ## Backend
 
---Express
---Nodejs
+-- Express
+-- Nodejs
 
 ### Features Available
 
---User can Signup for SendIT
---User can login to their account
---User can create a parcel delivery order
---User can change the destination or a cancel a parcel delivery order
---Users can view details about the orders they ahve created
+-- User can Signup for SendIT
+-- User can login to their account
+-- User can create a parcel delivery order
+-- User can change the destination or a cancel a parcel delivery order
+-- Users can view details about the orders they ahve created
 
 ### Installation
 
