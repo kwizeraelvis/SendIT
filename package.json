@@ -7,7 +7,9 @@
     "start": "nodemon SERVER/dist/app.js",
     "build": "babel SERVER/api/ --presets babel-preset-env --out-dir SERVER/dist/",
     "build-test": "babel SERVER/tests/ --presets babel-preset-env --out-dir SERVER/dist/",
-    "test": "mocha --timeout 150000 --compilers js:babel-register SERVER/tests/parcelTest.js --require babel-core/register --require babel-polyfill",
+    "test": "mocha --timeout 2000 --compilers js:babel-register SERVER/tests/parcelTest.js --require babel-core/register --require babel-polyfill",
+    "cover": "NODE_ENV=test istanbul cover _mocha -- --compilers js:babel-register --timeout 2000 SERVER/tests/parcelTest.js",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "devstart": "nodemon SERVER/api/app.js --exec babel-node --presets env"
   },
   "repository": {
@@ -24,9 +26,10 @@
   },
   "homepage": "https://github.com/kwizeraelvis/SendIT#readme",
   "dependencies": {
-    "babel-register": "^6.26.0",
-    "body-parser": "^1.18.3",
     "babel-polyfill": "^6.23.0",
+    "babel-register": "^6.26.0",
+    "bcrypt": "^3.0.2",
+    "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
     "dotenv": "^6.1.0",
@@ -38,10 +41,12 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "coveralls": "^3.0.2",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.14.0",
+    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.6",
     "nyc": "^13.1.0"

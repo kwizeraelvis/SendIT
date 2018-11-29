@@ -13,4 +13,6 @@ server.use(bodyParser.urlencoded({
 server.use(router);
 
 // const port = process.env.PORT || 5000;
-server.listen(3000);
+server.listen(8888);
+
+export default server;

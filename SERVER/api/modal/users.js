@@ -1,9 +1,10 @@
 const users = [
   {
     Uid: '1',
-    Unames: 'Kwizera',
-    Ulocation: 'Kigali',
-    Uemail: 'weirdemail@weirdhost.weird',
+    Ufirstname: 'kwizera',
+    Ulastname: 'Elvis',
+    Uusername: 'elv',
+    Upassword: '123',
     Parcels: [
       {
         Pid: 1,

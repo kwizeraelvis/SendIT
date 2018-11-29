@@ -3,7 +3,7 @@ import Parcels from '../modal/parcel';
 
 class parcelsController {
   static getAllParcels(req, res) {
-    return res.json({
+    return res.status(200).json({
       message: 'List of all parcels',
       parcels: Parcels,
     });
@@ -39,7 +39,7 @@ class parcelsController {
     const { Pid } = req.params;
     const oneParcel = Parcels.find(parcel => parcel.Pid === Pid);
     if (oneParcel) {
-      return res.json({
+      return res.status(200).json({
         message: 'parcel found',
         parcel: oneParcel,
       });

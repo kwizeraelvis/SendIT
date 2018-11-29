@@ -3,54 +3,33 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import router from '../api/routes/routes';
-import 'babel-polyfill';
+import server from '../api/app';
 
 const { expect } = chai;
 
 chai.use(chaiHttp);
 
-
 describe('Parcels', () => {
-  describe('GET /api/v1/parcels', () => {
-    it('should return an object of all parcels', (done) => {
-      chai.request(router)
-        .get('/api/v1/parcels')
-        .end((err, res) => {
-          // console.log(res);
-          expect(res.status).to.equal(200);
-          done();
-        });
+  describe('GET api/v1/parcels', () => {
+    it('it should return all parcels', (done) => {
+      chai.request(server).get('/api/v1/parcels').end((err, res) => {
+        expect(res.status).to.equal(200);
+        console.log(res.text);
+      });
+      done();
     });
   });
 });
-// describe('PARCELS', () => {
-//   describe('Get all parcels', () => {
-//     it('should return an object of all parcels', (done) => {
-//       chai
-//         .request(router)
-//         .get('/api/v1/parcels')
-//         .end((err, res) => {
-//           chai.expect(res.status).to.be.equal(200);
-//           // chai.expect(res.body).to.be.a('object');
-//           done();
-//         });
+// describe('Get one parcel with id 1', () => {
+//   it('should return one parcel object', (done) => {
+//     const Pid = 1;
+//     chai.request(server).get(`/api/v1/parcels/${Pid}`).end((err, res) => {
+//       expect(res.status).to.be.equal(200);
+//       console.log(res.text);
+//       done();
 //     });
 //   });
-//   describe('Get one parcel with id 1', () => {
-//     it('should return one parcel object', (done) => {
-//       const Pid = 1;
-//       chai
-//         .request(router)
-//         .get(`/api/v1/parcels/${Pid}`)
-//         .end((err, res) => {
-//           chai.expect(res.status).to.be.equal(200);
-//           // chai.expect(res.body).to.be.a('object');
-//           chai.expect(res.body.message).to.equal('parcel found');
-//           done();
-//         });
-//     });
-//   });
+// });
 //   describe('Get one parcel with id 10', () => {
 //     it('should return error', (done) => {
 //       const Pid = 10;

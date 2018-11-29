@@ -1,6 +1,7 @@
 import express from 'express';
 import parcelController from '../controllers/parcelController';
 import userController from '../controllers/userController';
+import DbConnectors from '../controllers/parcelDBController';
 
 
 const router = express.Router();
@@ -29,4 +30,25 @@ router.delete('/api/v1/parcels/:Pid/delete', parcelController.removeParcel);
 
 // get all parcels created by any user.
 router.get('/api/v1/users/:userId/parcels', userController.getParcelByUser);
+
+// create a new user
+router.post('/api/v1/users', userController.addUser);
+
+
+// Start of Database Api
+
+// Get all parcles
+router.get('/api/v2/parcels', DbConnectors.getAllParcels);
+
+// Get any Parcel By Id
+router.get('/api/v2/parcels/:Pid', DbConnectors.getParcelById);
+
+// create a new parcel
+router.post('/api/v2/parcels', DbConnectors.createParcel);
+
+// changing destination of a parcel
+router.put('/api/v2/parcels/:Pid', DbConnectors.changeDestination);
+
+// changing Status of a parcel
+router.put('/api/v2/parcels/:Pid', DbConnectors.changeStatus);
 export default router;
