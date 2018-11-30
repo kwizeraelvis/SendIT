@@ -1,3 +1,9 @@
+
+[![Coverage Status](https://coveralls.io/repos/github/kwizeraelvis/SendIT/badge.svg?branch=develop)](https://coveralls.io/github/kwizeraelvis/SendIT?branch=develop)
+[![Build Status](https://travis-ci.org/kwizeraelvis/SendIT.svg?branch=ft-dp-api-endpoints)](https://travis-ci.org/kwizeraelvis/SendIT)
+<a href="https://codeclimate.com/github/kwizeraelvis/SendIT/maintainability"><img src="https://api.codeclimate.com/v1/badges/45d802971fd53e5dbf7a/maintainability" /></a>
+<a href="https://codeclimate.com/github/kwizeraelvis/SendIT/test_coverage"><img src="https://api.codeclimate.com/v1/badges/45d802971fd53e5dbf7a/test_coverage" /></a>
+
 # SendIT
 
 ### SendIt is a courier service that helps users deliver parcels to over 220 locations WorldWide.
@@ -6,29 +12,29 @@
 
 ## UI/Frontend
 
--- HTML
--- CSS
--- Javascript
+- HTML
+- CSS
+- Javascript
 
 ## Backend
 
--- Express
--- Nodejs
+- Express
+- Nodejs
 
 ### Features Available
 
--- User can Signup for SendIT
--- User can login to their account
--- User can create a parcel delivery order
--- User can change the destination or a cancel a parcel delivery order
--- Users can view details about the orders they ahve created
+- User can Signup for SendIT
+- User can login to their account
+- User can create a parcel delivery order
+- User can change the destination or a cancel a parcel delivery order
+- Users can view details about the orders they ahve created
 
 ### Installation
 
-1)Fork this repo to your local storage.
-2)Run npm install to install diffrent dependencies needed for functioning
-3)Run npm run devstart to start the API server
-N.B. More commands can be found in the package.json 
+- Fork this repo to your local storage.
+- Run npm install to install diffrent dependencies needed for functioning
+- Run npm run devstart to start the API server
+- N.B. More commands can be found in the package.json 
 
 ### Available API Endpoints
 
