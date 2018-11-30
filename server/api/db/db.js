@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
+// import dbQueries from './queries';
 
 dotenv.config();
 const pool = new Pool({

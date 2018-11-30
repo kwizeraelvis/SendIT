@@ -4,11 +4,10 @@
   "description": "Andela Developer Challenge",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon SERVER/dist/app.js",
-    "test": "mocha --timeout 10000 --compilers js:babel-register SERVER/tests/parcelTest.js --require babel-core/register --require babel-polyfill",
-    "cover": "NODE_ENV=test istanbul cover _mocha -- --compilers js:babel-register --timeout 10000 SERVER/tests/parcelTest.js --require babel-polyfill",
+    "test": "mocha --timeout 10000 --compilers js:babel-register server/tests/parcelTest.js --require babel-core/register --require babel-polyfill",
+    "cover": "NODE_ENV=test istanbul cover _mocha -- --compilers js:babel-register --timeout 10000 server/tests/parcelTest.js --require babel-polyfill",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "devstart": "nodemon SERVER/api/app.js --exec babel-node --presets env"
+    "devstart": "nodemon server/api/app.js --exec babel-node --presets env"
   },
   "repository": {
     "type": "git",

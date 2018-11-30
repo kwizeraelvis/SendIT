@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import uuidv4 from 'uuid/v4';
-import execute from '../../db/connector';
+import execute from '../db/db';
 
 
-class DbConnectors {
+class parcelDbController {
   static async getAllParcels(req, res) {
     const findAllQuery = 'SELECT * FROM parcels where owner_id = $1';
     try {
@@ -94,4 +94,4 @@ class DbConnectors {
   }
 }
 
-export default DbConnectors;
+export default parcelDbController;
