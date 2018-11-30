@@ -1,6 +1,6 @@
 const dbQueries = {};
 
-const createParcelTable = `create table users if not exist
+const createParcelTable = `create table users
 (
     uid uuid,
     ufirstname varchar(50),
@@ -23,7 +23,7 @@ const createUserTable = `create table parcels
 )`;
 const createUserQuery = `insert into users
     (uid,ufirstname,ulastname,uemail,upassword)
-    values($1, $2, $3, $4, $5)`;
+    values($1, $2, $3, $4, $5) returning *`;
 const userLoginQuery = 'select * from users where uemail=$1';
 
 dbQueries.createParcelTable = createParcelTable;

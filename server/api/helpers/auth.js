@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
-import execute from '../db/connector';
+import execute from '../db/db';
 
 
 class Auth {

@@ -34,7 +34,7 @@ class userDbControllers {
 
   // Function That handles user login.
   static async userLogin(req, res) {
-    if (!req.body.Uemail || !req.body.Upassword) {
+    if (!req.body.uemail || !req.body.upassword) {
       return res.status(400).send({ message: 'Password or Username is missing' });
     }
     if (!helper.isValidEmail(req.body.uemail)) {
@@ -45,7 +45,7 @@ class userDbControllers {
       if (!result.rows[0]) {
         return res.status(400).send({ message: 'Invalid login details' });
       }
-      if (!helper.comparePassword(result.rows[0].Upassword, req.body.upassword)) {
+      if (!helper.comparePassword(result.rows[0].upassword, req.body.upassword)) {
         return res.status(400).send({ message: 'Invalid login details' });
       }
       const token = helper.generateToken(result.rows[0].uid);

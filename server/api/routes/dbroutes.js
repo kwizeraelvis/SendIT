@@ -4,7 +4,7 @@ import userDbControllers from '../controllers/userDBcontroller';
 import Auth from '../helpers/auth';
 
 
-const dbRoutes = express.dbRoutes();
+const dbRoutes = express.Router();
 
 // Get all parcles
 dbRoutes.get('/api/v2/parcels', Auth.verifyToken, parcelDbController.getAllParcels);
