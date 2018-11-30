@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/kwizeraelvis/SendIT.svg?branch=develop)](https://travis-ci.org/kwizeraelvis/SendIT)
 
+[![Coverage Status](https://coveralls.io/repos/github/kwizeraelvis/SendIT/badge.svg?branch=develop)](https://coveralls.io/github/kwizeraelvis/SendIT?branch=develop)
 
 # SendIT
 
