@@ -7,6 +7,7 @@ import userController from '../controllers/userController';
 dotenv.config();
 const router = express.Router();
 // get all parcels
+router.get('/api/v1/parcels', parcelController.getAllParcels);
 
 // get parcel by Id
 router.get('/api/v1/parcels/:Pid', parcelController.getParcelByID);

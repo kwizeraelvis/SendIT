@@ -19,7 +19,7 @@ class parcelDbController {
   static async getParcelById(req, res) {
     const selectById = 'SELECT * FROM parcels WHERE pid = $1 AND owner_id = $2';
     try {
-      const { rows } = await execute(selectById, [req.params.id, req.user.id]);
+      const { rows } = await execute(selectById, [req.params.pid, req.user.id]);
       if (!rows[0]) {
         return res.status(404).send({
           message: 'Parcel not found',
@@ -32,7 +32,7 @@ class parcelDbController {
   }
 
   static async createParcel(req, res) {
-    const query = 'insert into parcels(pid,plocation,pdestination,pstatus,pweight) values ($1,$2,$3,$4,$5,$6) returning *';
+    const query = 'insert into parcels(pid,plocation,pdestination,pstatus,pweight,owner_id) values ($1,$2,$3,$4,$5,$6,$7) returning *';
     const values = [
       uuidv4(),
       req.body.plocation,

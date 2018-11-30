@@ -14,13 +14,13 @@ class Auth {
     try {
       const decoded = await jwt.verify(token, process.env.SECRET);
       const query = 'select * from users where Uid = $1';
-      const result = await execute(query, [decoded.userId]);
+      const result = await execute(query, [decoded.owner_id]);
       if (!result.rows[0]) {
         return res.status(400).send({
           message: 'The token provided is invalid',
         });
       }
-      req.user = { uid: decoded.userId };
+      req.user = { uid: decoded.owner_id };
       next();
     } catch (error) {
       return res.status(400).send(error);
