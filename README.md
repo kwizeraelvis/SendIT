@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/kwizeraelvis/SendIT.svg?branch=develop)](https://travis-ci.org/kwizeraelvis/SendIT)
 
 
 # SendIT
