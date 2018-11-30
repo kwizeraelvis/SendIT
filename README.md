@@ -1,8 +1,4 @@
 
-[![Coverage Status](https://coveralls.io/repos/github/kwizeraelvis/SendIT/badge.svg?branch=develop)](https://coveralls.io/github/kwizeraelvis/SendIT?branch=develop)
-[![Build Status](https://travis-ci.org/kwizeraelvis/SendIT.svg?branch=ft-dp-api-endpoints)](https://travis-ci.org/kwizeraelvis/SendIT)
-<a href="https://codeclimate.com/github/kwizeraelvis/SendIT/maintainability"><img src="https://api.codeclimate.com/v1/badges/45d802971fd53e5dbf7a/maintainability" /></a>
-<a href="https://codeclimate.com/github/kwizeraelvis/SendIT/test_coverage"><img src="https://api.codeclimate.com/v1/badges/45d802971fd53e5dbf7a/test_coverage" /></a>
 
 # SendIT
 
