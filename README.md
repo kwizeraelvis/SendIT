@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/kwizeraelvis/SendIT.svg?branch=develop)](https://travis-ci.org/kwizeraelvis/SendIT)    [![Coverage Status](https://coveralls.io/repos/github/kwizeraelvis/SendIT/badge.svg?branch=develop)](https://coveralls.io/github/kwizeraelvis/SendIT?branch=develop)
 
+<a href="https://codeclimate.com/github/kwizeraelvis/SendIT/maintainability"><img src="https://api.codeclimate.com/v1/badges/45d802971fd53e5dbf7a/maintainability" /></a>
+
 # SendIT
 
 ### SendIt is a courier service that helps users deliver parcels to over 220 locations WorldWide.
